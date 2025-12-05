@@ -1,0 +1,12 @@
+names:
+- plastic
+- glass
+- metal
+- paper
+- cardboard
+- biological
+nc: 6
+path: /content/drive/MyDrive/proyecto-IA/garbage_yolo_real
+test: images/test
+train: images/train
+val: images/val

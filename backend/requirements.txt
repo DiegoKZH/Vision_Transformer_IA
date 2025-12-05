@@ -1,0 +1,12 @@
+# requirements.txt - ÚLTIMAS VERSIONES
+fastapi
+uvicorn[standard]
+ultralytics
+opencv-python
+numpy
+python-multipart
+aiofiles
+python-decouple
+python-socketio
+websockets
+pillow
