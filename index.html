@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía EcoTacho - UAC</title>
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --secondary: #66BB6A;
+            --accent: #1565C0;
+            --dark: #1a1a1a;
+            --light: #f4f9f4;
+            --text-gray: #333;
+            --white: #ffffff;
+            --warning: #c62828;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-gray);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 50%, #34495e 100%);
+            color: var(--white);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102,187,106,0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .uni-info {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.85;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 15px 0;
+            background: linear-gradient(45deg, #66BB6A, #4CAF50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 30px rgba(102,187,106,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.4;
+        }
+
+        .course-info {
+            margin: 25px 0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 15px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-info p {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 25px;
+            font-size: 0.9em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-member {
+            background: rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 50px 40px;
+            position: relative;
+            animation: slideIn 0.6s ease-out backwards;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(to right, #f9f9f9, #ffffff);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 700;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 40px;
+            background: linear-gradient(180deg, var(--accent), var(--primary));
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(21,101,192,0.3);
+        }
+
+        /* PROBLEMA */
+        .problem-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-left: 6px solid var(--warning);
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 4px 15px rgba(198,40,40,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-box::before {
+            content: '⚠️';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4em;
+            opacity: 0.1;
+        }
+
+        .stat-highlight {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--warning);
+            background: white;
+            padding: 2px 8px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* DESIGN THINKING */
+        .timeline {
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent), var(--secondary));
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 35px;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--accent), #1976D2);
+            color: white;
+            min-width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-right: 25px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 20px rgba(21,101,192,0.4);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .step-content {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 15px;
+            width: 100%;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e8f5e9;
+        }
+
+        .step:hover .step-content {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transform: translateX(5px);
+        }
+
+        .step h3 {
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-size: 1.3em;
+        }
+
+        /* TECH SPECS */
+        .vit-specs {
+            background: linear-gradient(135deg, #263238 0%, #37474f 100%);
+            color: #cfd8dc;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border: 1px solid #455a64;
+            line-height: 1.8;
+        }
+
+        .vit-specs strong {
+            color: #4CAF50;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        /* TECH GRID */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .tech-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: var(--accent);
+        }
+
+        .tech-card strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* MÉTRICAS */
+        .metrics-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .metric-circle {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 10px solid var(--secondary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, white 0%, #f1f8f4 100%);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .metric-circle::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .metric-circle:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .metric-circle:hover::before {
+            opacity: 0.1;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .metric-label {
+            font-size: 0.85em;
+            color: #666;
+            padding: 0 15px;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '♻️';
+            position: absolute;
+            font-size: 15em;
+            opacity: 0.05;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-15deg);
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-section h2::before {
+            background: white;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #f5f5f5;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: #888;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.85em;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            section { padding: 30px 25px; }
+            header { padding: 35px 25px; }
+            
+            .step {
+                flex-direction: column;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            .step-number {
+                margin-bottom: 15px;
+            }
+            
+            .metric-circle {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .metric-value {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            .subtitle { font-size: 1em; }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="uni-info">
+            Universidad Andina del Cusco<br>
+            Facultad de Ingeniería y Arquitectura<br>
+            Escuela Profesional de Ingeniería de Sistemas
+        </div>
+        <h1>EcoTacho ♻️</h1>
+        <div class="subtitle">Tacho Inteligente de Segregación Automática de Residuos</div>
+        
+        <div class="course-info">
+            <p><strong>Asignatura:</strong> Inteligencia Artificial | <strong>Docente:</strong> Mgt. Ing. Hugo Espetia Huamanga</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-member">Curo Mendoza Zayin Víctor</div>
+            <div class="team-member">Huaman Caceres Aldair Jon</div>
+            <div class="team-member">Salazar Benavente José David</div>
+            <div class="team-member">Zavaleta Hurtado Kevin Diego</div>
+        </div>
+    </header>
+
+    <section>
+        <h2>1. El Problema</h2>
+        <div class="problem-box">
+            <p>Perú genera <strong>8 millones de toneladas</strong> de residuos al año, pero solo recicla el <span class="stat-highlight">1.9%</span>. El problema no es la planta de reciclaje, es el <strong>comportamiento humano</strong> al momento de tirar la basura.</p>
+        </div>
+        <p>Los tachos actuales son confusos, sucios e indiferentes. <strong>EcoTacho</strong> nace para romper el ciclo: un tacho que reconoce el residuo, lo clasifica automáticamente y premia al usuario.</p>
+    </section>
+
+    <section>
+        <h2>2. Proceso: Design Thinking</h2>
+        <div class="timeline">
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Empatizar</h3>
+                    <p>Observación en 12 colegios y 3 universidades. <br><strong>Insight:</strong> La gente quiere reciclar bien, pero necesita una "voz experta" inmediata.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Definir</h3>
+                    <p>¿Cómo crear una experiencia tan simple que, con solo una foto, el usuario sepa exactamente dónde echar su residuo?</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Idear & Prototipar (IA)</h3>
+                    <p>Implementación de <strong>Vision Transformer (ViT)</strong> desde cero para máxima precisión en basura peruana.</p>
+                    
+                    <div class="vit-specs">
+                        <strong>DATASET "CuscoWaste-2025"</strong><br>
+                        • 8,650 imágenes propias (Cusco)<br>
+                        • 7 Clases: Orgánico, Plástico, Papel, Vidrio, Metal, Peligroso, Rechazo.<br>
+                        <br>
+                        <strong>ARQUITECTURA ViT-Base/16</strong><br>
+                        • Patch size: 16x16 | Embed dim: 768<br>
+                        • 12 Layers | 12 Heads<br>
+                        • Parámetros: 86 Millones<br>
+                        • Entrenamiento: 130 épocas (A100)
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Testear</h3>
+                    <p>Prueba piloto con 320 alumnos. Los errores de segregación bajaron del <strong>68% al 9%</strong>.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(to right, #f5f5f5, #ffffff);">
+        <h2>3. EcoTacho Vision (Web)</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <strong>⚡ Tecnología</strong>
+                Gradio 4.0 + Python + PyTorch Lightning
+            </div>
+            <div class="tech-card">
+                <strong>📱 Funcionalidad</strong>
+                Sube foto o usa cámara → Respuesta en &lt; 2 seg.
+            </div>
+            <div class="tech-card">
+                <strong>🧠 Explicabilidad</strong>
+                Heatmap de atención (¿Qué miró la IA?) + Texto claro.
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);">
+        <h2>4. Métricas de Impacto</h2>
+        <div class="metrics-container">
+            <div class="metric-circle">
+                <div class="metric-value">94.3%</div>
+                <div class="metric-label">Accuracy (Test Propio)</div>
+            </div>
+            <div class="metric-circle">
+                <div class="metric-value">1.7s</div>
+                <div class="metric-label">Tiempo de Inferencia</div>
+            </div>
+            <div class="metric-circle">
+                <div class="metric-value">87%</div>
+                <div class="metric-label">Reducción de Errores</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-size: 0.95em; color: #666;"><em>*Supera a ResNet-50 (87.9%) en contexto local.</em></p>
+    </section>
+
+    <div class="cta-section">
+        <h2>🚀 El Futuro del Reciclaje</h2>
+        <p style="font-size: 1.1em; margin-bottom: 25px;">EcoTacho no es solo un proyecto académico. Es una empresa naciente lista para escalar en 2026.</p>
+        <a href="https://diegokzh.github.io/Vision_Transformer_IA/" target="_blank" class="btn">🔗 Ver Repositorio GitHub</a>
+        <a href="https://diegokzh.github.io/Vision_Transformer_IA/" target="_blank" class="btn">🌐 Ver Demo Web</a>
+    </div>
+
+    <footer>
+        <p><strong>EcoTacho</strong> - Cusco, Perú 2025</p>
+        <p>Universidad Andina del Cusco</p>
+    </footer>
+</div>
+
+</body>
+</html>
